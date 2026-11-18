@@ -2,30 +2,32 @@ import java.util.Arrays;
 
 public class Rejestracja {
     public static void main(String[] args){
-        String[] uzytkownicy = {"ola",null,"admin"};
+        String[] users = {"ola", null, "admin"};
 
         //tworzenie kopii zapasowej
-        String[] kopia = Arrays.copyOf(uzytkownicy, uzytkownicy.length);
-        kopia[0] = "OLA";
-        System.out.println(kopia[0]);
-        System.out.println(uzytkownicy[0]);
+        String[] copy = Arrays.copyOf(users, users.length);
+        copy[0] = "OLA";
+        System.out.println(copy[0]);
+        System.out.println(users[0]);
 
         String login = new String("admin");
-        if (czyIstnieje(uzytkownicy,login)){
-            String powitanie = "witaj, ";
-            powitanie = powitanie.toUpperCase();
-            System.out.println(powitanie + login);
+        if (isExist(users, login)){
+            String greeting = "witaj, ";
+            greeting = greeting.toUpperCase();
+            System.out.println(greeting + login);
         }
 
-        uzytkownicy = new String[0];
-        System.out.println(uzytkownicy.length);
+        users = new String[0];
+        System.out.println( users.length );
     }
-    static boolean czyIstnieje(String[] lista, String szukany){
-        for(String u: lista){
-            if(szukany.equals(u)){
-                return true;
+    static boolean isExist(String[] list, String value ){
+            if ( value != null ){
+                for(String u: list){
+                    if(value.equals(u)){
+                        return true;
+                    }
+                }
             }
-        }
         return false;
     }
 }
