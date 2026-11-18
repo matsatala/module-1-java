@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Rejestracja {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String[] users = {"ola", null, "admin"};
 
         //tworzenie kopii zapasowej
@@ -11,23 +11,26 @@ public class Rejestracja {
         System.out.println(users[0]);
 
         String login = new String("admin");
-        if (isExist(users, login)){
+        if (isExist(users, login)) {
             String greeting = "witaj, ";
             greeting = greeting.toUpperCase();
             System.out.println(greeting + login);
         }
 
         users = new String[0];
-        System.out.println( users.length );
+        System.out.println(users.length);
     }
-    static boolean isExist(String[] list, String value ){
-            if ( value != null ){
-                for(String u: list){
-                    if(value.equals(u)){
-                        return true;
-                    }
-                }
+
+    static boolean isExist(String[] list, String value) {
+        if (value != null) {
+            return false;
+        }
+        for (String u : list) {
+            if (value.equals(u)) {
+                return true;
             }
+        }
+
         return false;
     }
 }
