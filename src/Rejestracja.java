@@ -11,7 +11,7 @@ public class Rejestracja {
         System.out.println(users[0]);
 
         String login = new String("admin");
-        if (isExist(users, login)) {
+        if (containsValue(users, login)) {
             String greeting = "witaj, ";
             greeting = greeting.toUpperCase();
             System.out.println(greeting + login);
@@ -21,8 +21,8 @@ public class Rejestracja {
         System.out.println(users.length);
     }
 
-    static boolean isExist(String[] list, String value) {
-        if (value != null) {
+    static boolean containsValue(String[] list, String value) {
+        if (value == null) {
             return false;
         }
         for (String u : list) {
