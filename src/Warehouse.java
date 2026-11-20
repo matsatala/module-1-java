@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Warehouse {
     public static void main(String[] args) {
         int count = 0;
-        String[] products = new String[]{null,null,null,null,null};
+        String[] products = new String[5];
 
         String nullTest = null;
         String name = new String("milk");
@@ -66,7 +66,7 @@ public class Warehouse {
     }
     static void printProducts(String[] products){
         for(int i = 0; i < products.length; i++){
-            if(products[i] == null){break;}
+            if(products[i] == null){continue;}
             System.out.println(i+": "+products[i]);
         }
         System.out.println();
