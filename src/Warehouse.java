@@ -2,6 +2,12 @@ import java.util.Arrays;
 
 public class Warehouse {
     public static void main(String[] args) {
+        int count = 0;
+        String[] products = new String[]{null,null,null,null,null};
+
+        String nullTest = null;
+        String name = new String("milk");
+        String[] productsBackup = backup(products);
 
     }
     static boolean contains(String[] products, String name){
