@@ -2,14 +2,12 @@ import java.util.Arrays;
 
 public class Warehouse {
     public static void main(String[] args) {
-        int count = 0;
         String[] products = new String[5];
 
-        String nullTest = null;
         String name = new String("milk");
 
         // adding item to products
-        count = addProduct(products, name, count);
+        int count = addProduct(products, name);
         System.out.println(count);
 
         // printing items of products table
@@ -17,29 +15,29 @@ public class Warehouse {
 
 
         // attempt to add null and duplicate
-        count = addProduct(products, nullTest, count);
-        count = addProduct(products, name, count);
+        addProduct(products, null);
+        count = addProduct(products, name);
 
         // count should remain unchanged
         System.out.println(count);
 
         // adding items to fill the table
-        count = addProduct(products, "cheese", count);
-        count = addProduct(products, "ham", count);
+        addProduct(products, "cheese");
+        addProduct(products, "ham");
 
         // creating copy
         String[] productsBackup = backup(products);
 
         // filling the table continuation
-        count = addProduct(products, "flour", count);
-        count = addProduct(products, "eggs", count);
+        addProduct(products, "flour");
+        count = addProduct(products, "eggs");
 
         // count = 5 and printing table
         System.out.println(count);
         printProducts(products);
 
         // adding excessive item
-        count = addProduct(products, "bread", count);
+        count = addProduct(products, "bread");
         // count and table should remain the same
         System.out.println(count);
         printProducts(products);
@@ -62,13 +60,21 @@ public class Warehouse {
         return false;
     }
 
-    static int addProduct(String[] products, String name, int count) {
-        if (products.length == count
-                || name == null
-                || contains(products, name)) {
+    static int addProduct(String[] products, String name) {
+        int count = 0;
+        int index = -1;
+        for (int i = 0; i < products.length; i++) {
+            if (products[i] == null && index == -1) {
+                index = i;
+            }
+            if (products[i] != null) {
+                count++;
+            }
+        }
+        if (name == null || contains(products, name) || count == products.length) {
             return count;
         }
-        products[count] = name;
+        products[index] = name;
         return count + 1;
     }
 
