@@ -8,66 +8,80 @@ public class Warehouse {
         String nullTest = null;
         String name = new String("milk");
 
-        // utworzenie kopii
-        String[] productsBackup = backup(products);
-
-        // dodanie produktu do orginału i wypisanie nowego count
+        // adding item to products
         count = addProduct(products, name, count);
         System.out.println(count);
 
-        // wyświetlenie obu tablic
+        // printing items of products table
         printProducts(products);
-        printProducts(productsBackup);
 
-        // próba dodania duplikatu i null
+
+        // attempt to add null and duplicate
         count = addProduct(products, nullTest, count);
         count = addProduct(products, name, count);
-        // powinno być nadal 1
+
+        // count should remain unchanged
         System.out.println(count);
 
-        // dodanie produktów aby wypełnić tablicę
+        // adding items to fill the table
         count = addProduct(products, "cheese", count);
         count = addProduct(products, "ham", count);
+
+        // creating copy
+        String[] productsBackup = backup(products);
+
+        // filling the table continuation
         count = addProduct(products, "flour", count);
         count = addProduct(products, "eggs", count);
 
-        // powinno być 5 + wyświetlenie produktów
+        // count = 5 and printing table
         System.out.println(count);
         printProducts(products);
 
-        // dodajemy nadmiarowy produkt
+        // adding excessive item
         count = addProduct(products, "bread", count);
-        // count nie powinien się zmienić a lista tablica powinna zostać taka sama bez żadnego błędu
+        // count and table should remain the same
         System.out.println(count);
         printProducts(products);
 
-        // wypisanie kopii jeszcze raz dla pewności powinna być pusta
+        // printing copy and original table to see the difference
         System.out.println(">>>");
+        printProducts(products);
         printProducts(productsBackup);
     }
-    static boolean contains(String[] products, String name){
-        if(name == null){return false;}
-        for (String product: products){
-            if(name.equals(product)){
+
+    static boolean contains(String[] products, String name) {
+        if (name == null) {
+            return false;
+        }
+        for (String product : products) {
+            if (name.equals(product)) {
                 return true;
             }
         }
         return false;
     }
-    static int addProduct(String[] products, String name, int count){
-        if(products.length == count
+
+    static int addProduct(String[] products, String name, int count) {
+        if (products.length == count
                 || name == null
-                || contains(products, name)){return count;}
+                || contains(products, name)) {
+            return count;
+        }
         products[count] = name;
         return count + 1;
     }
-    static String[] backup(String[] products){
-        return Arrays.copyOf(products,products.length);
+
+    static String[] backup(String[] products) {
+        return Arrays.copyOf(products, products.length);
     }
-    static void printProducts(String[] products){
-        for(int i = 0; i < products.length; i++){
-            if(products[i] == null){continue;}
-            System.out.println(i+": "+products[i]);
+
+    static void printProducts(String[] products) {
+        for (int i = 0; i < products.length; i++) {
+            if (products[i] == null) {
+                continue;
+            }
+            System.out.println(i + ": " + products[i]);
         }
         System.out.println();
     }
