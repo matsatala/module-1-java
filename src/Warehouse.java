@@ -15,9 +15,11 @@ public class Warehouse {
 
 
         // attempt to add null and duplicate
-        addProduct(products, null);
-        count = addProduct(products, name);
+        count = addProduct(products, null);
+        // count should remain unchanged
+        System.out.println(count);
 
+        count = addProduct(products, name);
         // count should remain unchanged
         System.out.println(count);
 
@@ -40,10 +42,8 @@ public class Warehouse {
         count = addProduct(products, "bread");
         // count and table should remain the same
         System.out.println(count);
-        printProducts(products);
 
         // printing copy and original table to see the difference
-        System.out.println(">>>");
         printProducts(products);
         printProducts(productsBackup);
     }
